@@ -6,12 +6,12 @@ import { PrismaService } from 'src/database/prisma.service';
 export class OrdersRepository {
     constructor(private prisma: PrismaService) {}
 
-    async createTweet(params: { data: Prisma.OrderCreateInput }): Promise<Order> {
+    async createOrder(params: { data: Prisma.OrderCreateInput }): Promise<Order> {
         const { data } = params;
         return this.prisma.order.create({ data });
       }
     
-      async getTweets(params: {
+      async getOrders(params: {
         skip?: number;
         take?: number;
         cursor?: Prisma.OrderWhereUniqueInput;
@@ -22,7 +22,7 @@ export class OrdersRepository {
         return this.prisma.order.findMany({ skip, take, cursor, where, orderBy });
       }
     
-      async updateTweet(params: {
+      async updateOrder(params: {
         where: Prisma.OrderWhereUniqueInput;
         data: Prisma.OrderUpdateInput;
       }): Promise<Order> {
@@ -30,7 +30,7 @@ export class OrdersRepository {
         return this.prisma.order.update({ where, data });
       }
     
-      async deleteTweet(params: {
+      async deleteOrder(params: {
         where: Prisma.OrderWhereUniqueInput;
       }): Promise<Order> {
         const { where } = params;
